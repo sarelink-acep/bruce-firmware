@@ -14,10 +14,10 @@
 // Section 1. Call up the right driver file and any options for it
 //
 // ##################################################################################
-#include "TFT_Drivers/ST7735_Defines.h"
+//#include "TFT_Drivers/ST7735_Defines.h"
 // Only define one driver, the other ones must be commented out
 //#define ILI9341_DRIVER
-#define ST7735_DRIVER  // Define additional parameters below for this display
+#define ST7789_DRIVER  // Define additional parameters below for this display
 //#define ILI9163_DRIVER     // Define additional parameters below for this
 // display #define S6D02A1_DRIVER #define RPI_ILI9486_DRIVER // 20MHz maximum
 // SPI #define HX8357D_DRIVER #define ILI9481_DRIVER #define ILI9486_DRIVER
@@ -28,14 +28,14 @@
 // Minimal configuration option, define additional parameters below for this
 // display #define R61581_DRIVER #define RM68140_DRIVER
 
-#define TFT_DRIVER 0x7735
+//#define TFT_DRIVER 0x7789
 // Some displays support SPI reads via the MISO pin, other displays have a
 // single bi-directional SDA pin and the library will try to read this via the
 // MOSI line. To use the SDA line for reading data from the TFT uncomment the
 // following line:
 
 // #define TFT_SDA_READ      // This option is for ESP32 ONLY, tested with
-// ST7789 display only
+ ST7789 display only
 
 // For ST7789 and ILI9341 ONLY, define the colour order IF the blue and red are
 // swapped on your display Try ONE option at a time to find the correct colour
@@ -51,12 +51,12 @@
 
 // For ST7789, ST7735 and ILI9163 ONLY, define the pixel width and height in
 // portrait orientation
-#define TFT_WIDTH 80
+//#define TFT_WIDTH 240
 // #define TFT_WIDTH  128
 // #define TFT_WIDTH  240 // ST7789 240 x 240 and 240 x 320
-#define TFT_HEIGHT 160
+//#define TFT_HEIGHT 160
 // #define TFT_HEIGHT 128
-// #define TFT_HEIGHT 240 // ST7789 240 x 240
+#define TFT_HEIGHT 240 // ST7789 240 x 240
 // #define TFT_HEIGHT 320 // ST7789 240 x 320
 
 // For ST7735 ONLY, define the type of display, originally this was based on the
@@ -193,11 +193,11 @@
 //#define TFT_RST  33  // Reset pin (could connect to Arduino RESET pin)
 //#define TFT_BL   32  // LED back-light (required for M5Stack)
 
-#define TFT_MOSI 15
-#define TFT_SCLK 13
-#define TFT_CS   5   // Chip select line for TFT display on Shield
-#define TFT_DC   23  // Data/command line for TFT on Shield
-#define TFT_RST  18  // Reset line for TFT is handled by seesaw!
+#define TFT_MOSI 11
+#define TFT_SCLK 12
+#define TFT_CS   -1   // Chip select line for TFT display on Shield
+#define TFT_DC   13  // Data/command line for TFT on Shield
+#define TFT_RST  14  // Reset line for TFT is handled by seesaw!
 #define TOUCH_CS -1 
 
 // ######       EDIT THE PINs BELOW TO SUIT YOUR ESP32 PARALLEL TFT SETUP ######
@@ -257,9 +257,12 @@
 //#define LOAD_GFXFF  // FreeFonts. Include access to the 48 Adafruit_GFX free
                     // fonts FF1 to FF48 and custom fonts
 
-// Comment out the #define below to stop the SPIFFS filing system and smooth
-// font code being loaded this will save ~20kbytes of FLASH
-#define SMOOTH_FONT 1
+#define TFT_MOSI 15
+#define TFT_SCLK 13
+#define TFT_CS   5   // Chip select line for TFT display on Shield
+#define TFT_DC   23  // Data/command line for TFT on Shield
+#define TFT_RST  18  // Reset line for TFT is handled by seesaw!
+#define TOUCH_CS -1 
 
 // ##################################################################################
 //
@@ -278,8 +281,8 @@
 // #define SPI_FREQUENCY   5000000
 // #define SPI_FREQUENCY  10000000
 // #define SPI_FREQUENCY  20000000
-#define SPI_FREQUENCY 27000000  // Actually sets it to 26.67MHz = 80/3
-// #define SPI_FREQUENCY  40000000 // Maximum to use SPIFFS
+//#define SPI_FREQUENCY 27000000  // Actually sets it to 26.67MHz = 80/3
+#define SPI_FREQUENCY  40000000 // Maximum to use SPIFFS
 // #define SPI_FREQUENCY  80000000
 
 // Optional reduced SPI frequency for reading TFT
